@@ -1,0 +1,60 @@
+ <!-- Page Content -->
+
+<div class="container">
+    <div class="row">
+
+        <!-- Blog Entries Column -->
+        <div class="col-md-8">
+            <h2>
+                <a href="#">{{post.name}}</a>
+            </h2>
+            <p class="lead">
+                by <a href="#/">{{post.userName}}</a>
+            </p>
+            <p><span class="glyphicon glyphicon-time"></span> Posted on {{post.publishDate | date:'dd.MM.yyyy H:mm'}}</p>
+            <hr>
+            <!-- <img class="img-responsive" src={{post.urlImage}} alt="">
+             --><hr>
+            <p>{{post.content}}</p>
+
+            <!-- <hr> -->
+            <h3>Commentaires</h3><br>
+            <div ng-repeat="comment in post.comments">
+            <hr>
+                <strong>{{comment.userName}}</strong>
+                <div ng-bind-html="comment.content"></div>
+            </div>
+            <br>
+            <a class="btn btn-primary" href="#/">Revenir à la pas d'acceuil <span class="glyphicon glyphicon-chevron-right"></span></a>
+
+            <hr>
+
+            <form ng-submit="addComment()">
+                        
+                            <label>Name</label>
+                            <input type="text" class="form-control" placeholder="Name" required data-validation-required-message="Please enter your name." ng-model="newComment.username">
+                            <p class="help-block text-danger"></p>
+                        
+                   
+                            <label>Ville</label>
+                            <input type="text" class="form-control" placeholder="Ville" required data-validation-required-message="Please enter city." ng-model="newComment.city">
+                            <p class="help-block text-danger"></p>
+                   
+                        
+                            <label>Email Address</label>
+                            <input type="email" class="form-control" placeholder="Email Address" id="email" required data-validation-required-message="Please enter your email address." ng-model="newComment.email">
+                            <p class="help-block text-danger"></p>
+
+                            <label>Commentaire</label>
+                            <!--<textarea rows="5" class="form-control" placeholder="Message" id="message" required data-validation-required-message="Please enter a message." ng-model="newComment.content"></textarea>
+                            <p class="help-block text-danger"></p>-->
+
+                            <div text-angular="text-angular" name="Message" ng-model="newComment.content" ta-disabled='disabled' id="message"></div>
+                        
+                            <button type="submit" class="btn btn-default">Send</button>
+                </form>
+        </div>
+    </div>
+
+</div>
+ 
