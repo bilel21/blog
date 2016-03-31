@@ -6,7 +6,7 @@ app.factory('PostFactory', function($http, $q){
 			if(factory.posts !== false){
 				deffered.resolve(factory.posts);
 			}else{
-				var url = 'http://localhost:9000/api/posts';
+				var url = 'http://10.106.184.100:9000/api/posts';
 				$http.get(url)
 				.success(function(data, status){
 					factory.posts = data;
@@ -37,7 +37,7 @@ app.factory('PostFactory', function($http, $q){
 
 		addComment : function(comment){
 			var deffered = $q.defer();
-			var url = 'http://localhost:9000/api/comments';
+			var url = 'http://10.106.184.100:9000/api/comments';
 			$http.post(url, comment)
 			.success(function(data, status){
 				deffered.resolve(comment);
@@ -50,11 +50,11 @@ app.factory('PostFactory', function($http, $q){
 		
 		addPost : function(post){
 			var deffered = $q.defer();
-				var url = 'http://localhost:9000/api/posts';
-				$http.post(url)
-				.success(function(data, status){
-					factory.posts.push(data);
-					deffered.resolve(data);
+				var url = 'http://10.106.184.100:9000/api/posts';
+				$http.post(url, post)
+				.success(function(post, status){
+					factory.posts.push(post);
+					deffered.resolve(post);
 				})
 				.error(function(data){
 					deffered.reject('Impossible de sauvegarder un article');

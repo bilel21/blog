@@ -4,10 +4,11 @@
 <div class="container">
 	<div class="row">
 
-		<!-- Blog Entries Column -->
+		
 		<div class="col-md-8">
 			<h2>Ajouter un nouveau article</h2>
 			<hr>
+			<form ng-submit="addPost()">
 			<label>Nom de l'article</label> <input type="text"
 				class="form-control" placeholder="Name" required
 				data-validation-required-message="SVP entrez le nom de l'article."
@@ -18,18 +19,18 @@
 			<textarea rows="5" class="form-control" placeholder="Abstract"
 				id="abstract" required
 				data-validation-required-message="SVP entrez une résumé."
-				ng-model="newPost.abstract"></textarea>
+				ng-model="newPost.resume"></textarea>
 			<p class="help-block text-danger"></p>
 
 			<label>Contenu</label>
-			<textarea rows="10" class="form-control" placeholder="Content"
-				id="content" required
-				data-validation-required-message="SVP entrez le contenu de l'article."
-				ng-model="newPost.content"></textarea>
+			<div text-angular="text-angular" name="Article"
+				ng-model="newPost.content" ta-disabled='disabled' id="content"></div>
 			<p class="help-block text-danger"></p>
-
-			<button ng-click="addPost()" class="btn btn-default">Create</button>
-
+			
+			
+			
+			<input type="submit" id="submit" value="Create" class="btn btn-default"/>
+			</form>
 		</div>
 	</div>
 

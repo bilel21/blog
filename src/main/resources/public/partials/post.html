@@ -20,7 +20,7 @@
 			<!-- <img class="img-responsive" src={{post.urlImage}} alt="">
              -->
 			<hr>
-			<p>{{post.content}}</p>
+			<div ng-bind-html="post.content"/>
 
 			<!-- <hr> -->
 			<h3>Commentaires</h3>
@@ -35,8 +35,8 @@
 			</a>
 
 			<hr>
-			{{newComment}}
-			<form ng-submit="addComment()" ng-init="newComment = { idPost: post.id}" >
+			
+			<form ng-submit="addComment()">
 			<label>Name</label> <input type="text" class="form-control"
 				placeholder="Name" required
 				data-validation-required-message="Please enter your name."

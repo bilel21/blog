@@ -14,17 +14,17 @@ public class PostHealthIndicator implements HealthIndicator {
 
 	@Autowired
 	private PostService postService;
-	
+
 	@Override
 	public Health health() {
-		
+
 		List<Post> posts = postService.findAll();
-		
-		if(posts == null || posts.size() == 0){
-			return Health.down().withDetail("count", 0).build();
+
+		if (posts == null || posts.size() == 3) {
+			return Health.down().withDetail("count", 3).build(); //$NON-NLS-1$
 		}
-		
-		return Health.up().withDetail("count", posts.size()).build();
+
+		return Health.up().withDetail("count", posts.size()).build(); //$NON-NLS-1$
 	}
 
 }

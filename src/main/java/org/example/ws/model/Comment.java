@@ -10,15 +10,15 @@ public class Comment {
 	@Id
 	@GeneratedValue
 	private Long id;
-	
+
 	private String userName;
-	
+
 	private String city;
-	
+
 	private String email;
-	
+
 	private String content;
-	
+
 	private Long postId;
 
 	public Long getId() {

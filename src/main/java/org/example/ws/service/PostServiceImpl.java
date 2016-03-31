@@ -1,5 +1,6 @@
 package org.example.ws.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.example.ws.model.Post;
@@ -13,10 +14,10 @@ import org.springframework.stereotype.Service;
 public class PostServiceImpl implements PostService {
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
-	
+
 	@Autowired
 	private PostRepository postRepository;
-	
+
 	@Override
 	public List<Post> findAll() {
 		logger.info(" > findAllPosts");
@@ -24,7 +25,7 @@ public class PostServiceImpl implements PostService {
 		logger.info(" < findAllPosts");
 		return list;
 	}
-	
+
 	@Override
 	public Post findOne(Long id) {
 		logger.info(" > findPost");
@@ -36,6 +37,8 @@ public class PostServiceImpl implements PostService {
 	@Override
 	public Post create(Post post) {
 		logger.info(" > savePost");
+		post.setUserName("Moi");
+		post.setPublishDate(new Date());
 		Post savedPost = postRepository.save(post);
 		logger.info(" < savePost");
 		return savedPost;

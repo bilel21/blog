@@ -10,7 +10,7 @@ public class CommentServiceImpl implements CommentService {
 
 	@Autowired
 	CommentRepository commentRepository;
-	
+
 	@Override
 	public Comment create(Comment comment) {
 		Comment savedComment = commentRepository.save(comment);

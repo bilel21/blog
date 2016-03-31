@@ -10,59 +10,48 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 @RestController
 public class PostController {
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
-	
+
 	@Autowired
 	private PostService postService;
-	
-	@RequestMapping(
-            value = "/api/posts",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Collection<Post>> getGreetings() {
+
+	@CrossOrigin(origins = "http://10.106.184.100:9000")
+	@RequestMapping(value = "/api/posts", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Collection<Post>> getGreetings() {
 		logger.info(" >>> Controller findAll Post");
-        return new ResponseEntity<Collection<Post>>(postService.findAll(), HttpStatus.OK);
-    }
-	
-	@RequestMapping(
-            value = "/api/posts/{id}",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Post> getPost(@PathVariable("id") Long id) {
-        logger.info("> getPost id:{}", id);
+		return new ResponseEntity<Collection<Post>>(postService.findAll(), HttpStatus.OK);
+	}
 
-        Post post = postService.findOne(id);
-        if (post == null) {
-            return new ResponseEntity<Post>(HttpStatus.NOT_FOUND);
-        }
+	@CrossOrigin(origins = "http://10.106.184.100:9000")
+	@RequestMapping(value = "/api/posts/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Post> getPost(@PathVariable("id") Long id) {
+		logger.info("> getPost id:{}", id);
 
-        logger.info("< getPost id:{}", id);
-        return new ResponseEntity<Post>(post, HttpStatus.OK);
-    }
-	
-	 @RequestMapping(
-	            value = "/api/posts",
-	            method = RequestMethod.POST,
-	            consumes = MediaType.APPLICATION_JSON_VALUE,
-	            produces = MediaType.APPLICATION_JSON_VALUE)
-	    public ResponseEntity<Post> createGreeting(
-	            @RequestBody Post post) {
-	        logger.info("> createPost");
+		Post post = postService.findOne(id);
+		if (post == null) {
+			return new ResponseEntity<Post>(HttpStatus.NOT_FOUND);
+		}
 
-	        Post savedPost = postService.create(post);
+		logger.info("< getPost id:{}", id);
+		return new ResponseEntity<Post>(post, HttpStatus.OK);
+	}
 
-	        logger.info("< createPost");
-	        return new ResponseEntity<Post>(savedPost, HttpStatus.CREATED);
-	    }
+	@CrossOrigin(origins = "http://10.106.184.100:9000")
+	@RequestMapping(value = "/api/posts", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Post> createPost(@RequestBody Post post) {
+		logger.info("> createPost");
+		Post savedPost = postService.create(post);
+		logger.info("< createPost");
+		return new ResponseEntity<Post>(savedPost, HttpStatus.CREATED);
+	}
 }
