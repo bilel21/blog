@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @RestController
 public class PostController {
 
@@ -56,11 +58,11 @@ public class PostController {
 	            produces = MediaType.APPLICATION_JSON_VALUE)
 	    public ResponseEntity<Post> createGreeting(
 	            @RequestBody Post post) {
-	        logger.info("> createGreeting");
+	        logger.info("> createPost");
 
 	        Post savedPost = postService.create(post);
 
-	        logger.info("< createGreeting");
+	        logger.info("< createPost");
 	        return new ResponseEntity<Post>(savedPost, HttpStatus.CREATED);
 	    }
 }

@@ -1,33 +1,37 @@
- <!-- Page Content -->
+
+<!-- Page Content -->
 
 <div class="container">
-    <div class="row">
+	<div class="row">
 
-        <!-- Blog Entries Column -->
-        <div class="col-md-8">
-            <h2>
-                Ajouter un nouveau article
-            </h2>
-            <hr>
-            {{newPost}}
-            <form ng-submit="addPost()">
-                        
-                            <label>Nom de l'article</label>
-                            <input type="text" class="form-control" placeholder="Name" required data-validation-required-message="SVP entrez le nom de l'article." ng-model="newPost.name">
-                            <p class="help-block text-danger"></p>
+		<!-- Blog Entries Column -->
+		<div class="col-md-8">
+			<h2>Ajouter un nouveau article</h2>
+			<hr>
+			<label>Nom de l'article</label> <input type="text"
+				class="form-control" placeholder="Name" required
+				data-validation-required-message="SVP entrez le nom de l'article."
+				ng-model="newPost.name">
+			<p class="help-block text-danger"></p>
 
-                            <label>Résumé</label>
-                            <textarea rows="5" class="form-control" placeholder="Abstract" id="abstract" required data-validation-required-message="SVP entrez une résumé." ng-model="newPost.abstract"></textarea>
-                            <p class="help-block text-danger"></p>
+			<label>Résumé</label>
+			<textarea rows="5" class="form-control" placeholder="Abstract"
+				id="abstract" required
+				data-validation-required-message="SVP entrez une résumé."
+				ng-model="newPost.abstract"></textarea>
+			<p class="help-block text-danger"></p>
 
-                            <label>Contenu</label>
-                            <textarea rows="10" class="form-control" placeholder="Content" id="content" required data-validation-required-message="SVP entrez le contenu de l'article." ng-model="newPost.content"></textarea>
-                            <p class="help-block text-danger"></p>
-                        
-                            <button type="submit" class="btn btn-default">Send</button>
-                </form>
-        </div>
-    </div>
+			<label>Contenu</label>
+			<textarea rows="10" class="form-control" placeholder="Content"
+				id="content" required
+				data-validation-required-message="SVP entrez le contenu de l'article."
+				ng-model="newPost.content"></textarea>
+			<p class="help-block text-danger"></p>
+
+			<button ng-click="addPost()" class="btn btn-default">Create</button>
+
+		</div>
+	</div>
 
 </div>
- 
+

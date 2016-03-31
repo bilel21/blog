@@ -12,6 +12,7 @@ app.controller('PostCtrl', function($scope, PostFactory, $routeParams, $rootScop
 	$rootScope.loading = true;
 	$scope.newComment = {};
 	$scope.newPost = {};
+	
 	var post = PostFactory.getPost($routeParams.id).then(function(post){
 		$rootScope.loading=false;
 		$scope.post = post;
@@ -20,19 +21,19 @@ app.controller('PostCtrl', function($scope, PostFactory, $routeParams, $rootScop
 	});
 	
 
-	$scope.addComment = function($scope, PostFactory){
+	$scope.addComment = function(){
 		$scope.post.comments.push($scope.newComment);
-		$scope.newComment = {};
 		//insertion du commentaire dans la base
-		factory.addComment($scope.newComment, $scope.post.id).then(function(){
+		$scope.newComment.idPost = $scope.post.id;
+		PostFactory.addComment($scope.newComment).then(function(){
 			
 		}, function(){
 			alert("Votre message ne peut pas être sauvegarder !!");
 		});
-
+		$scope.newComment = {};
 	};
 
-	$scope.addPost = function($scope, PostFactory){
+	$scope.addPost = function(){
 		console.info($scope.newPost);
 		$scope.posts.push($scope.newPost);
 		//insertion du commentaire dans la base

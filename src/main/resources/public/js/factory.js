@@ -35,13 +35,17 @@ app.factory('PostFactory', function($http, $q){
 			return deffered.promise;
 		},
 
-		addComment : function(comment, idPost){
-			//Ajout d'un commentaire à la base ....
-			//var deffered = $q.defer();
-			//deffered.resolve();
-			//return deffered.promise;
-			console.info(comment);
-			console.info(idPost);
+		addComment : function(comment){
+			var deffered = $q.defer();
+			var url = 'http://localhost:9000/api/comments';
+			$http.post(url, comment)
+			.success(function(data, status){
+				deffered.resolve(comment);
+			})
+			.error(function(data){
+				deffered.reject('Impossible de récupérer les articles');
+			});
+			return deffered.promise;
 		},
 		
 		addPost : function(post){
