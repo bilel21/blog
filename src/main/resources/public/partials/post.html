@@ -6,34 +6,20 @@
 
 		<!-- Blog Entries Column -->
 		<div class="col-md-8">
-			<h2>
-				<a href="#">{{post.name}}</a>
-			</h2>
-			<p class="lead">
-				by <a href="#/">{{post.userName}}</a>
-			</p>
-			<p>
-				<span class="glyphicon glyphicon-time"></span> Posted on
-				{{post.publishDate | date:'dd.MM.yyyy H:mm'}}
-			</p>
-			<hr>
-			<!-- <img class="img-responsive" src={{post.urlImage}} alt="">
-             -->
+			<strong><a href="#/">{{post.name}}</a></strong>
+			<p>  <span class="glyphicon glyphicon-user"></span> {{post.userName}}  <span class="glyphicon glyphicon-time"></span> Posted on {{post.publishDate | date:'dd.MM.yyyy H:mm'}}</p>
 			<hr>
 			<div ng-bind-html="post.content"/>
-
-			<!-- <hr> -->
-			<h3>Commentaires</h3>
-			<br>
+			<hr/><br/>
+			<strong><u>Commentaires</u></strong><span class="badge">{{post.comments.lenght}}</span>
 			<div ng-repeat="comment in post.comments">
-				<hr>
-				<strong>{{comment.userName}}</strong>
+				<strong>{{comment.userName}}</strong> - <small><a href="#/">Editer</a>/<a href="#/">Supprimer</a></small>
+				
 				<div ng-bind-html="comment.content"></div>
+				
 			</div>
-			<br> <a class="btn btn-primary" href="#/">Revenir à la pas
-				d'acceuil <span class="glyphicon glyphicon-chevron-right"></span>
-			</a>
-
+			<br> 
+			
 			<hr>
 			
 			<form ng-submit="addComment()">

@@ -5,36 +5,26 @@
             <!-- Blog Entries Column -->
             <div class="col-md-8">
 
-                <h1 class="page-header">
-                    SQL Corporate
-                    <small>Apprendre sql comme jouer à la playstation</small>
-                </h1>
+                <h2 class="page-header">
+                    <span style="color: RED">SQL Corporate</span>
+                    <small>Apprendre avec des exemples detailles sql, pl/sql, oracle ...</small>
+                </h2>
                 <!-- Blog Post -->
 				<div ng-repeat = "post in posts">
 
-					<h3>{{post.name}}</h3>
-                    <div ng-comment></div>
-					</h2>
-					<p class="lead">
-						by <a href="index.php">{{post.userName}}</a>
-					</p>
-					<p><span class="glyphicon glyphicon-time"></span> Posted on {{post.publishDate | date:'dd.MM.yyyy H:mm'}}</p>
-					<!--<hr>
-					 <img class="img-responsive" src={{post.urlImage}} alt=""> 
-					<hr>-->
-					<p>{{post.resume}}</p>
-					<a class="btn btn-primary" href="#/api/posts/{{post.id}}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
-
+					<a href="#/api/posts/{{post.id}}"><strong>{{post.name}}</strong></a>
+					<p>  <span class="glyphicon glyphicon-user"></span> {{post.userName}}  <span class="glyphicon glyphicon-time"></span> Posted on {{post.publishDate | date:'dd.MM.yyyy H:mm'}}</p>
+					<div ng-bind-html="post.resume"/>
 					<hr>
 				</div>
 
                 <!-- Pager -->
                 <ul class="pager">
                     <li class="previous">
-                        <a href="#">&larr; Older</a>
+                        <a href="#/">&larr; Precedent</a>
                     </li>
                     <li class="next">
-                        <a href="#">Newer &rarr;</a>
+                        <a href="#/">Suivant &rarr;</a>
                     </li>
                 </ul>
 
@@ -43,10 +33,7 @@
            <div ng-include src="'partials/side.html'"></div>
 
         </div>
-        <!-- /.row -->
-
         <hr>
-
         <div ng-include src="'partials/footer.html'"></div>
 
     </div>

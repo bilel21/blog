@@ -39,6 +39,7 @@ public class PostServiceImpl implements PostService {
 		logger.info(" > savePost");
 		post.setUserName("Moi");
 		post.setPublishDate(new Date());
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>> size " + post.getContent().length());
 		Post savedPost = postRepository.save(post);
 		logger.info(" < savePost");
 		return savedPost;
