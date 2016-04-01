@@ -13,7 +13,7 @@
 				<div ng-repeat = "post in posts">
 
 					<a href="#/api/posts/{{post.id}}"><strong>{{post.name}}</strong></a>
-					<p>  <span class="glyphicon glyphicon-user"></span> {{post.userName}}  <span class="glyphicon glyphicon-time"></span> Posted on {{post.publishDate | date:'dd.MM.yyyy H:mm'}}</p>
+					<p>  <span class="glyphicon glyphicon-user"></span> {{post.userName}}  <span style="margin-left: 30px;" class="glyphicon glyphicon-time"></span>{{post.publishDate | date:'dd.MM.yyyy H:mm'}}</p>
 					<div ng-bind-html="post.resume"/>
 					<hr>
 				</div>
@@ -21,10 +21,10 @@
                 <!-- Pager -->
                 <ul class="pager">
                     <li class="previous">
-                        <a href="#/">&larr; Precedent</a>
+                        <a href="#/"><span class="glyphicon glyphicon-menu-left"></span></a>
                     </li>
                     <li class="next">
-                        <a href="#/">Suivant &rarr;</a>
+                        <a href="#/"><span class="glyphicon glyphicon-menu-right"></span></a>
                     </li>
                 </ul>
 

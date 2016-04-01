@@ -7,15 +7,25 @@
 		<!-- Blog Entries Column -->
 		<div class="col-md-8">
 			<strong><a href="#/">{{post.name}}</a></strong>
-			<p>  <span class="glyphicon glyphicon-user"></span> {{post.userName}}  <span class="glyphicon glyphicon-time"></span> Posted on {{post.publishDate | date:'dd.MM.yyyy H:mm'}}</p>
+			<p>  <span class="glyphicon glyphicon-user"></span> {{post.userName}}  <span style="margin-left: 30px;" class="glyphicon glyphicon-time"></span> {{post.publishDate | date:'dd.MM.yyyy H:mm'}}</p>
 			<hr>
 			<div ng-bind-html="post.content"/>
 			<hr/><br/>
-			<strong><u>Commentaires</u></strong><span class="badge">{{post.comments.lenght}}</span>
+			<strong><u>Commentaires</u></strong><span class="badge">{{post.comments.length}}</span>
+			<br>
+			<br>
 			<div ng-repeat="comment in post.comments">
-				<strong>{{comment.userName}}</strong> - <small><a href="#/">Editer</a>/<a href="#/">Supprimer</a></small>
-				
+				<span style="float: left;">
+						<span class="glyphicon glyphicon-user"></span> <strong>{{comment.userName}}</strong><span style="margin-left: 30px;" class="glyphicon glyphicon-time"></span> {{post.publishDate | date:'dd.MM.yyyy H:mm'}}
+				</span>
+				<span style="float: right;">
+					<a href="#/"><span class="glyphicon glyphicon-remove"></span></a>
+					<a href="#/"><span class="glyphicon glyphicon-pencil"></span></a>
+				</span>
+                
+                <br>
 				<div ng-bind-html="comment.content"></div>
+				<br>
 				
 			</div>
 			<br> 

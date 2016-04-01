@@ -1,5 +1,7 @@
 package org.example.ws.model;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -18,6 +20,8 @@ public class Comment {
 	private String email;
 
 	private String content;
+	
+	private Date publishDate;
 
 	private Long postId;
 
@@ -59,6 +63,14 @@ public class Comment {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public Date getPublishDate() {
+		return publishDate;
+	}
+
+	public void setPublishDate(Date publishDate) {
+		this.publishDate = publishDate;
 	}
 
 	public Long getPostId() {
