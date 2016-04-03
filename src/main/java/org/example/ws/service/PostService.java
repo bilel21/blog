@@ -11,4 +11,6 @@ public interface PostService {
 	Post findOne(Long id);
 
 	Post create(Post post);
+	
+	void delete(Long id);
 }

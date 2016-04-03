@@ -3,12 +3,22 @@
 
 <div class="container">
 	<div class="row">
-
+<img alt="Developer Book" src="img/logo.png" style="margin-bottom: 50px;"/>
 		
-		<div class="col-md-8">
+		<div class="form-group form-group-sm">
 			<strong style="color: blue;">Ajouter un nouveau article</strong>
 			<hr>
 			<form ng-submit="addPost()">
+			<label style="color: gray;">Categorie</label>
+    			<select name="singleSelect" ng-model="newPost.category" class="form-control">
+      				<option value="1">Java Core</option>
+      				<option value="2">Spring Tutoriels</option>
+      				<option value="3">Java EE</option>
+      				<option value="4">Oracle</option>
+      				<option value="5">Unix</option>
+      				<option value="6">Securite</option>
+    			</select><br>
+    
 			<label style="color: gray;">Nom de l'article</label> <input type="text"
 				class="form-control" placeholder="Name" required
 				data-validation-required-message="SVP entrez le nom de l'article."
@@ -16,12 +26,6 @@
 			<p class="help-block text-danger"></p>
 
 			<label style="color: gray;">Résumé</label>
-			<!-- <textarea rows="5" class="form-control" placeholder="Abstract"
-				id="abstract" required
-				data-validation-required-message="SVP entrez une résumé."
-				ng-model="newPost.resume"></textarea>
-			<p class="help-block text-danger"></p> -->
-			
 			<div text-angular="text-angular" name="Resume"
 				ng-model="newPost.resume" ta-disabled='disabled' id="resume"></div>
 			<p class="help-block text-danger"></p>
@@ -33,10 +37,10 @@
 			
 			
 			
-			<input type="submit" id="submit" value="Create" class="btn btn-default"/>
+			<input type="submit" id="submit" value="Poster" class="btn btn-default"/>
 			</form>
 		</div>
 	</div>
-
+<div ng-include src="'partials/footer.html'"></div>
 </div>
 

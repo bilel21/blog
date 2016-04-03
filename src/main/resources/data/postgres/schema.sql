@@ -5,7 +5,7 @@ CREATE TABLE POST (
   name VARCHAR(100) NOT NULL,
   resume VARCHAR(4000) NOT NULL,
   publishDate DATETIME,
-  content VARCHAR(65535) NOT NULL,
+  content text NOT NULL,
   userName VARCHAR(100) NOT NULL,
   category INT NOT NULL,
   PRIMARY KEY(id)
@@ -18,7 +18,7 @@ CREATE TABLE COMMENT(
   userName VARCHAR(100) NOT NULL,
   city VARCHAR(100) NOT NULL,
   email VARCHAR(100) NOT NULL,
-  content VARCHAR(4000) NOT NULL,
+  content VARCHAR(10000) NOT NULL,
   publishDate DATETIME,
   postId BIGINT NOT NULL,
   CONSTRAINT FK_Comment_postId FOREIGN KEY (postId) REFERENCES Post(id),

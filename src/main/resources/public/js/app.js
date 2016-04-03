@@ -5,5 +5,6 @@ app.config(function($routeProvider){
 		.when('/',{templateUrl : 'partials/home.html', controller:'PostsCtrl'} )
 		.when('/api/posts/:id',{templateUrl:'partials/post.html', controller:'PostCtrl'} )
 		.when('/addpost',{templateUrl:'partials/addpost.html', controller:'PostCtrl'} )
+		.when('/api/postsByCategory/:category',{templateUrl:'partials/posts.html', controller:'PostCtrl'} )
 		.otherwise({redirectTo : '/'});
 });

@@ -1,0 +1,44 @@
+<div class="container">
+
+	<div class="row">
+
+		<!-- Blog Entries Column -->
+		<div class="col-md-8">
+
+
+			<img alt="Developer Book" src="img/logo.png"
+				style="margin-bottom: 50px;" />
+
+			<div ng-repeat="post in postsByCategory | filter:searchText">
+				<span style="float: left;">
+					<a href="#/api/posts/{{post.id}}"><strong>{{post.name}}</strong></a>
+				</span>	
+				<span style="float: right;">
+					<a href="#/"><span class="glyphicon glyphicon-remove"></span></a>
+					<a href="#/"><span class="glyphicon glyphicon-pencil"></span></a>
+				</span>
+				<p>
+					<span class="glyphicon glyphicon-user"></span> {{post.userName}} <span
+						style="margin-left: 30px;" class="glyphicon glyphicon-time"></span>{{post.publishDate
+					| date:'dd.MM.yyyy H:mm'}}
+				</p>
+				<div ng-bind-html="post.resume" />
+				<hr>
+			</div>
+
+			<!-- Pager -->
+			<ul class="pager">
+				<li class="previous"><a href="#/"><span
+						class="glyphicon glyphicon-menu-left"></span></a></li>
+				<li class="next"><a href="#/"><span
+						class="glyphicon glyphicon-menu-right"></span></a></li>
+			</ul>
+		</div>
+
+		<div ng-include src="'partials/side.html'"></div>
+
+	</div>
+	<hr>
+	<div ng-include src="'partials/footer.html'"></div>
+
+</div>

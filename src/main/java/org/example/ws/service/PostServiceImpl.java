@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class PostServiceImpl implements PostService {
@@ -44,5 +45,14 @@ public class PostServiceImpl implements PostService {
 		logger.info(" < savePost");
 		return savedPost;
 	}
+	
+	@Transactional
+    @Override
+    public void delete(Long id) {
+        logger.info("> delete {}", id);
+        postRepository.delete(id);
+        logger.info("< delete {}", id);
+    }
+
 
 }

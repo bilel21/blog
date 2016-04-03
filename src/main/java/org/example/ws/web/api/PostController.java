@@ -25,14 +25,12 @@ public class PostController {
 	@Autowired
 	private PostService postService;
 
-	@CrossOrigin(origins = "http://10.106.184.100:9000")
 	@RequestMapping(value = "/api/posts", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Collection<Post>> getGreetings() {
 		logger.info(" >>> Controller findAll Post");
 		return new ResponseEntity<Collection<Post>>(postService.findAll(), HttpStatus.OK);
 	}
 
-	@CrossOrigin(origins = "http://10.106.184.100:9000")
 	@RequestMapping(value = "/api/posts/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Post> getPost(@PathVariable("id") Long id) {
 		logger.info("> getPost id:{}", id);
@@ -46,12 +44,22 @@ public class PostController {
 		return new ResponseEntity<Post>(post, HttpStatus.OK);
 	}
 
-	@CrossOrigin(origins = "http://10.106.184.100:9000")
 	@RequestMapping(value = "/api/posts", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Post> createPost(@RequestBody Post post) {
 		logger.info("> createPost");
 		Post savedPost = postService.create(post);
 		logger.info("< createPost");
 		return new ResponseEntity<Post>(savedPost, HttpStatus.CREATED);
+	}
+
+	@CrossOrigin(origins="http://loaclhost:9000", methods={RequestMethod.DELETE})
+	@RequestMapping(value = "/api/posts/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Post> deletePost(@PathVariable("id") Long id) throws Exception {
+		logger.info("> deletePost");
+
+		postService.delete(id);
+
+		logger.info("< deletePost");
+		return new ResponseEntity<Post>(HttpStatus.NO_CONTENT);
 	}
 }

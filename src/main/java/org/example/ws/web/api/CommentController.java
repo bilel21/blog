@@ -22,7 +22,6 @@ public class CommentController {
 	@Autowired
 	CommentService commentService;
 
-	@CrossOrigin(origins = "http://10.106.184.100:9000")
 	@RequestMapping(value = "/api/comments", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Comment> createComment(@RequestBody Comment comment) {
 		logger.info("> createComment");

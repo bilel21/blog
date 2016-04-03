@@ -25,6 +25,8 @@ public class Post {
 	private String content;
 
 	private String userName;
+	
+	private Integer category;
 
 	@OneToMany
 	@JoinColumn(name = "postId")
@@ -84,6 +86,14 @@ public class Post {
 
 	public void setComments(List<Comment> comments) {
 		this.comments = comments;
+	}
+
+	public Integer getCategory() {
+		return category;
+	}
+
+	public void setCategory(Integer category) {
+		this.category = category;
 	}
 
 	@Override

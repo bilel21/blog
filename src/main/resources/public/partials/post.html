@@ -3,10 +3,16 @@
 
 <div class="container">
 	<div class="row">
-
+		<img alt="Developer Book" src="img/logo.png" style="margin-bottom: 50px;"/>
 		<!-- Blog Entries Column -->
 		<div class="col-md-8">
-			<strong><a href="#/">{{post.name}}</a></strong>
+			<span style="float: left;">
+				<strong><a href="#/api/postsByCategory/{{post.category}}">{{post.name}}</a></strong>
+			</span>
+			<span style="float: right;">
+				<a href="#/api/posts"><span class="glyphicon glyphicon-remove" ng-click="delete()"></span></a>
+				<a href="#/"><span class="glyphicon glyphicon-pencil"></span></a>
+			</span>
 			<p>  <span class="glyphicon glyphicon-user"></span> {{post.userName}}  <span style="margin-left: 30px;" class="glyphicon glyphicon-time"></span> {{post.publishDate | date:'dd.MM.yyyy H:mm'}}</p>
 			<hr>
 			<div ng-bind-html="post.content"/>
@@ -52,13 +58,11 @@
 			<p class="help-block text-danger"></p>
 
 			<label>Commentaire</label>
-			<!--<textarea rows="5" class="form-control" placeholder="Message" id="message" required data-validation-required-message="Please enter a message." ng-model="newComment.content"></textarea>
-            <p class="help-block text-danger"></p>-->
 
 			<div text-angular="text-angular" name="Message"
 				ng-model="newComment.content" ta-disabled='disabled' id="message"></div>
 
-			<input type="submit" id="submit" value="Create" class="btn btn-default"/>
+			<input type="submit" id="submit" value="Poster" class="btn btn-default"/>
 			</form>
 		</div>
 	</div>
